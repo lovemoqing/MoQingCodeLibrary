@@ -9,6 +9,6 @@ namespace MoQing.Infrastructure.FileService
     /// </summary>
     public abstract class AbstractFileStrategy
     {
-        public abstract void Upload();
+        public abstract void Upload(string bucket,string fileName, byte[] data);
     }
 }

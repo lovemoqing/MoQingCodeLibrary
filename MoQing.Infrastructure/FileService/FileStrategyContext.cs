@@ -15,9 +15,9 @@ namespace MoQing.Infrastructure.FileService
             this.fileStrategy = fileStrategy;
         }
 
-        public void Upload()
+        public void Upload(string bucket, string saveKey, byte[] data)
         {
-            fileStrategy.Upload();
+            fileStrategy.Upload(bucket, saveKey,data);
         }
     }
 }
