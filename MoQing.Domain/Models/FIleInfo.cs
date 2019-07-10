@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MoQing.Domain
 {
+    [SugarTable("TB_FileInfo")]
     public class FileInfo
     {
         public int ID { get; set; }
