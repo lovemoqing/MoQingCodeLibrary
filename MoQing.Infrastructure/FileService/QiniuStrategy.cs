@@ -1,4 +1,5 @@
-﻿using MoQing.Infrastructure.Config;
+﻿using MoQing.Domain;
+using MoQing.Infrastructure.Config;
 using Qiniu.Http;
 using Qiniu.IO;
 using Qiniu.IO.Model;
@@ -14,7 +15,7 @@ namespace MoQing.Infrastructure.FileService
     /// </summary>
     public class QiniuStrategy : AbstractFileStrategy
     {
-        public override void Upload(string bucket, string saveKey, byte[] data)
+        public override ApiResult Upload(string bucket, string saveKey, byte[] data)
         {
             var AK = ConfigExtensions.Configuration["Qiniu:AK"];
             var SK = ConfigExtensions.Configuration["Qiniu:SK"];
@@ -38,7 +39,12 @@ namespace MoQing.Infrastructure.FileService
             string token = Auth.CreateUploadToken(mac, jstr);
             FormUploader fu = new FormUploader();
             HttpResult result = fu.UploadData(data, saveKey, token);
-            //Console.WriteLine(result);
+            return new ApiResult() { Code = result.Code };
+        }
+        public override ApiResult DownLoad(string onlineUrl, string savaPath)
+        {
+            HttpResult result = DownloadManager.Download(onlineUrl, savaPath);
+            return new ApiResult() { Code = result.Code };
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MoQing.Domain;
+using Qiniu.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,9 +17,13 @@ namespace MoQing.Infrastructure.FileService
             this.fileStrategy = fileStrategy;
         }
 
-        public void Upload(string bucket, string saveKey, byte[] data)
+        public ApiResult Upload(string bucket, string saveKey, byte[] data)
         {
-            fileStrategy.Upload(bucket, saveKey,data);
+            return fileStrategy.Upload(bucket, saveKey,data);
+        }
+        public ApiResult DownLoad(string onlineUrl, string savaPath)
+        {
+            return fileStrategy.DownLoad(onlineUrl, savaPath);
         }
     }
 }

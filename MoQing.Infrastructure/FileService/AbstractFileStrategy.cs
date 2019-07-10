@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MoQing.Domain;
+using Qiniu.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +11,8 @@ namespace MoQing.Infrastructure.FileService
     /// </summary>
     public abstract class AbstractFileStrategy
     {
-        public abstract void Upload(string bucket,string fileName, byte[] data);
+        public abstract ApiResult Upload(string bucket,string fileName, byte[] data);
+
+        public abstract ApiResult DownLoad(string onlineUrl, string savaPath);
     }
 }
