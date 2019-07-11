@@ -36,7 +36,7 @@ namespace MoQing.WebApi.Controllers
         /// <param name="onlineUrl">浏览器访问地址 http://qiniu.lovemoqing.com/微信图片_20190409172929.jpg </param>
         /// <param name="savaPath">本地路径+文件名+文件后缀名 D:\penglong\test\saved-snow.jpg</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet, Route("DownLoad")]
         public ActionResult<ApiResult> DownLoad(string onlineUrl, string savaPath)
         {
             FileStrategyContext context = new FileStrategyContext(new FileFactory().Create(Tools.GetDefaultFileMode()));
@@ -50,7 +50,7 @@ namespace MoQing.WebApi.Controllers
         /// <param name="savaKey"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet, Route("UpLoad")]
         public ActionResult<ApiResult> UpLoad(string bucket, string savaKey,byte[] data)
         {
             FileStrategyContext context = new FileStrategyContext(new FileFactory().Create(Tools.GetDefaultFileMode()));
