@@ -56,5 +56,11 @@ namespace MoQing.WebApi.Controllers
             FileStrategyContext context = new FileStrategyContext(new FileFactory().Create(Tools.GetDefaultFileMode()));
             return context.Upload(bucket, savaKey, data);
         }
+
+        [HttpDelete, Route("test")]
+        public ActionResult<bool> Test()
+        {
+            return true;
+        }
     }
 }
