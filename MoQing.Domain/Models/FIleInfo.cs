@@ -14,7 +14,7 @@ namespace MoQing.Domain
         /// 文件类型：图片、视频、音频等
         /// </summary>
         public string Type { get; set; }
-        public int Size { get; set; }
+        public double Size { get; set; }
         public DateTime CreateTime { get; set; }
         public int IsDelete { get; set; }
         public string Remarks { get; set; }
