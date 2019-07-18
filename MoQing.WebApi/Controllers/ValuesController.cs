@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MoQing.Application.FileService;
 using MoQing.Domain;
@@ -27,7 +28,7 @@ namespace MoQing.WebApi.Controllers
         {
             var AK = ConfigExtensions.Configuration["Qiniu:AK"];
             var user = _mapper.Map<FileInfo>(model); //映射
-            return _fileService.GetName() + "|" + user.Name + "|" + AK; 
+            return _fileService.GetName() + "|" + user.Name + "|" + AK;
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace MoQing.WebApi.Controllers
         /// <param name="data"></param>
         /// <returns></returns>
         [HttpGet, Route("UpLoad")]
-        public ActionResult<ApiResult> UpLoad(string bucket, string savaKey,byte[] data)
+        public ActionResult<ApiResult> UpLoad(string bucket, string savaKey, byte[] data)
         {
             FileStrategyContext context = new FileStrategyContext(new FileFactory().Create(Tools.GetDefaultFileMode()));
             return context.Upload(bucket, savaKey, data);
@@ -61,6 +62,31 @@ namespace MoQing.WebApi.Controllers
         public ActionResult<bool> Test()
         {
             return true;
+        }
+
+        /// <summary>
+        /// 发送手机验证码
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        [EnableCors("any")]
+        [HttpPost, Route("SendCode")]
+        public ActionResult<string> SendCode(string phone)
+        {
+            return "123456";
+        }
+
+        /// <summary>
+        /// 验证手机短信码
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        [EnableCors("any")]
+        [HttpPost, Route("vaild")]
+        public ActionResult<bool> Vaild(string phone, string code)
+        {
+            return code == "123456" ? true : false;
         }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MoQing.Infrastructure.Config;
 using MoQing.WebApi.Config;
 using Swashbuckle.AspNetCore.Swagger;
 namespace MoQing.WebApi
@@ -35,7 +36,17 @@ namespace MoQing.WebApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
-
+            //配置跨域处理
+            services.AddCors(options =>
+            {
+                options.AddPolicy("any", build =>
+                {
+                    build.AllowAnyOrigin() //允许任何来源的主机访问
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();//指定处理cookie
+                });
+            }); 
             //添加对AutoMapper的支持
             services.AddAutoMapper();
 
