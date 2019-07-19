@@ -69,8 +69,6 @@ namespace MoQing.WebApi.Controllers
             putPolicy.Scope = ConfigExtensions.Configuration["Qiniu:Backet"];
             // 上传策略有效期(对应于生成的凭证的有效期)          
             putPolicy.SetExpires(3600);
-            // 上传到云端多少天后自动删除该文件，如果不设置（即保持默认默认）则不删除
-            putPolicy.DeleteAfterDays = 1;
             // 生成上传凭证，参见
             // https://developer.qiniu.com/kodo/manual/upload-token            
             string jstr = putPolicy.ToJsonString();
