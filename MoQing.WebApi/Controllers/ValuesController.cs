@@ -8,6 +8,8 @@ using MoQing.Infrastructure.Common;
 using MoQing.Infrastructure.Config;
 using MoQing.Infrastructure.FileService;
 using Qiniu.Http;
+using Qiniu.IO.Model;
+using Qiniu.Util;
 
 namespace MoQing.WebApi.Controllers
 {
@@ -56,6 +58,25 @@ namespace MoQing.WebApi.Controllers
         {
             FileStrategyContext context = new FileStrategyContext(new FileFactory().Create(Tools.GetDefaultFileMode()));
             return context.Upload(bucket, savaKey, data);
+        }
+         
+        [HttpGet, Route("Auth")]
+        public ActionResult<ApiResult> Auth()
+        {
+            PutPolicy putPolicy = new PutPolicy();
+            // 如果需要设置为"覆盖"上传(如果云端已有同名文件则覆盖)，请使用 SCOPE = "BUCKET:KEY"
+            // putPolicy.Scope = bucket + ":" + saveKey;
+            putPolicy.Scope = ConfigExtensions.Configuration["Qiniu:Backet"];
+            // 上传策略有效期(对应于生成的凭证的有效期)          
+            putPolicy.SetExpires(3600);
+            // 上传到云端多少天后自动删除该文件，如果不设置（即保持默认默认）则不删除
+            putPolicy.DeleteAfterDays = 1;
+            // 生成上传凭证，参见
+            // https://developer.qiniu.com/kodo/manual/upload-token            
+            string jstr = putPolicy.ToJsonString();
+            Mac mac = new Mac(ConfigExtensions.Configuration["Qiniu:AK"], ConfigExtensions.Configuration["Qiniu:SK"]);
+            string token = QiniuAuthSDK.CreateUploadToken(mac, jstr);
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = token };
         }
 
         [HttpDelete, Route("test")]
