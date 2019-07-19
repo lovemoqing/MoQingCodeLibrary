@@ -78,36 +78,5 @@ namespace MoQing.WebApi.Controllers
             string token = QiniuAuthSDK.CreateUploadToken(mac, jstr);
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = token };
         }
-
-        [HttpDelete, Route("test")]
-        public ActionResult<bool> Test()
-        {
-            return true;
-        }
-
-        /// <summary>
-        /// 发送手机验证码
-        /// </summary>
-        /// <param name="phone"></param>
-        /// <returns></returns>
-        [EnableCors("any")]
-        [HttpPost, Route("SendCode")]
-        public ActionResult<string> SendCode(string phone)
-        {
-            return "123456";
-        }
-
-        /// <summary>
-        /// 验证手机短信码
-        /// </summary>
-        /// <param name="phone"></param>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        [EnableCors("any")]
-        [HttpPost, Route("vaild")]
-        public ActionResult<bool> Vaild(string phone, string code)
-        {
-            return code == "123456" ? true : false;
-        }
     }
 }

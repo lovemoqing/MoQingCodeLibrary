@@ -6,7 +6,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-appsettings.json
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -34,7 +33,7 @@ bld/
 # NUNIT
 *.VisualState.xml
 TestResult.xml
-
+appsettings.json
 # Build Results of an ATL Project
 [Dd]ebugPS/
 [Rr]eleasePS/
