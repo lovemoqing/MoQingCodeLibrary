@@ -9,12 +9,15 @@ using MoQing.Infrastructure.Config;
 using MoQing.Infrastructure.FileService;
 using Qiniu.Http;
 using Qiniu.IO.Model;
+using Qiniu.RS;
+using Qiniu.RS.Model;
 using Qiniu.Util;
 
 namespace MoQing.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("any")]
     public class ValuesController : ControllerBase
     {
         private IFileService _fileService;
@@ -75,6 +78,20 @@ namespace MoQing.WebApi.Controllers
             Mac mac = new Mac(ConfigExtensions.Configuration["Qiniu:AK"], ConfigExtensions.Configuration["Qiniu:SK"]);
             string token = QiniuAuthSDK.CreateUploadToken(mac, jstr);
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = token };
+        }
+
+        [HttpGet, Route("list")]
+        public ActionResult<ApiResult> GetFileList()
+        {
+            Mac mac = new Mac(ConfigExtensions.Configuration["Qiniu:AK"], ConfigExtensions.Configuration["Qiniu:SK"]);
+            string bucket = ConfigExtensions.Configuration["Qiniu:Backet"];
+            string marker = ""; // 首次请求时marker必须为空
+            string prefix = null; // 按文件名前缀保留搜索结果
+            string delimiter = null; // 目录分割字符(比如"/")
+            int limit = 100; // 单次列举数量限制(最大值为1000)
+            BucketManager bm = new BucketManager(mac);
+            ListResult result = bm.ListFiles(bucket, prefix, marker, limit, delimiter);
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = result.Result.Items };
         }
     }
 }
