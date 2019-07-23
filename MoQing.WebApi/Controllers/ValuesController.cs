@@ -93,5 +93,15 @@ namespace MoQing.WebApi.Controllers
             ListResult result = bm.ListFiles(bucket, prefix, marker, limit, delimiter);
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = result.Result.Items };
         }
+
+        [HttpPost, Route("del/{key}")]
+        public ActionResult<ApiResult> DelFile(string key)
+        {
+            Mac mac = new Mac(ConfigExtensions.Configuration["Qiniu:AK"], ConfigExtensions.Configuration["Qiniu:SK"]);
+            string bucket = ConfigExtensions.Configuration["Qiniu:Backet"];
+            BucketManager bm = new BucketManager(mac);
+            bm.Delete(bucket, key);
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = null };
+        }
     }
 }
