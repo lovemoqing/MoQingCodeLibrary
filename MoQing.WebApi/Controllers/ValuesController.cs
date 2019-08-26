@@ -103,5 +103,11 @@ namespace MoQing.WebApi.Controllers
             bm.Delete(bucket, key);
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = null };
         }
+
+        [HttpPost, Route("Test")]
+        public ActionResult<ApiResult> Test()
+        {
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = null };
+        }
     }
 }
