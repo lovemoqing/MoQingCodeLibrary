@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MoQing.Infrastructure.Config;
@@ -77,6 +78,16 @@ namespace MoQing.WebApi
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            var rewrite = new RewriteOptions()
+               .AddRedirect(@"index/(\d+)", "https://q.cnblogs.com/");
+
+            rewrite.AddRedirect("", "");
+
+            app.UseRewriter(rewrite);
+
+
+
             //启用中间件服务生成Swagger作为JSON终结点
             app.UseSwagger();
             //启用中间件服务对swagger-ui，指定Swagger JSON终结点
