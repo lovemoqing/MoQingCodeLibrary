@@ -31,7 +31,19 @@ namespace MoQing.Infrastructure.Repositories
             return db.Deleteable(entity).ExecuteCommandAsync();
         }
 
-        public virtual Task<TEntity> FirstOrDefaultAsync(string id)
+        public Task<int> DeleteAsync(int id)
+        {
+            try
+            {
+                return db.Deleteable<TEntity>(id).ExecuteCommandAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public virtual Task<TEntity> FirstOrDefaultAsync(int id)
         {
             return db.Queryable<TEntity>().FirstAsync(p => p.ID == id);
         }
