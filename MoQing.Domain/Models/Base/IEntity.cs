@@ -6,6 +6,6 @@ namespace MoQing.Domain.Models
 {
     public interface IEntity
     {
-        string ID { get; set; }
+        int ID { get; set; }
     }
 }
