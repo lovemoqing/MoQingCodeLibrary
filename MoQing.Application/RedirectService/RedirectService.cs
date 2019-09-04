@@ -9,8 +9,8 @@ namespace MoQing.Application
 {
     public class RedirectService : IRedirectService
     {
-        private ISqlBaseRepository<Redirect> repository;
-        public RedirectService(ISqlBaseRepository<Redirect> repository)
+        private IRedirectRepository<Redirect> repository;
+        public RedirectService(IRedirectRepository<Redirect> repository)
         {
             this.repository = repository;
         }

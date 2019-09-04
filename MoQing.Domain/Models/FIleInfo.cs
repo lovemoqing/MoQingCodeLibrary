@@ -1,4 +1,5 @@
-﻿using SqlSugar;
+﻿using MoQing.Domain.Models;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Text;
 namespace MoQing.Domain
 {
     [SugarTable("TB_FileInfo")]
-    public class FileInfo
+    public class FileInfo: IEntity
     {
         public int ID { get; set; }
         public string Name { get; set; }

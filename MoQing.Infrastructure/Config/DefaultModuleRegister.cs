@@ -1,4 +1,7 @@
 ﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using MoQing.Domain.Models;
+using MoQing.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +16,16 @@ namespace MoQing.WebApi.Config
     {
         protected override void Load(ContainerBuilder builder)
         {
+
+            ////程序集注入数据仓储
+            //var IRepository = Assembly.Load("MoQing.Infrastructure");
+            //var Repository = Assembly.Load("MoQing.Infrastructure");
+
+            ////根据名称约定（仓储层的接口和实现均以Repository结尾），实现服务接口和服务实现的依赖
+            //builder.RegisterAssemblyTypes(IRepository, Repository)
+            //  .Where(t => t.Name.EndsWith("Repository"))
+            //  .AsImplementedInterfaces();
  
-            //程序集注入数据仓储
-            var IRepository = Assembly.Load("MoQing.Infrastructure");
-            var Repository = Assembly.Load("MoQing.Infrastructure");
-
-            //根据名称约定（仓储层的接口和实现均以Repository结尾），实现服务接口和服务实现的依赖
-            builder.RegisterAssemblyTypes(IRepository, Repository)
-              .Where(t => t.Name.EndsWith("Repository"))
-              .AsImplementedInterfaces();
-
             //程序集注入业务服务
             var IAppServices = Assembly.Load("MoQing.Application");
             var AppServices = Assembly.Load("MoQing.Application");

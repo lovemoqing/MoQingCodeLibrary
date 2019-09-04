@@ -51,7 +51,6 @@ namespace MoQing.WebApi
             }); 
             //添加对AutoMapper的支持
             services.AddAutoMapper();
-
             ContainerBuilder builder = new ContainerBuilder();
             //新模块组件注册
             builder.RegisterModule<DefaultModuleRegister>();

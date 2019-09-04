@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoQing.Infrastructure
 {
-    public interface ISqlBaseRepository<TEntity> where TEntity : class, IEntity
+    public interface IRedirectRepository<TEntity> where TEntity : class, IEntity
     {
         Task<TEntity> FirstOrDefaultAsync(int id);
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);

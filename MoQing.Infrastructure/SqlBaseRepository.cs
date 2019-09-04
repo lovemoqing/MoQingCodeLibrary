@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 namespace MoQing.Infrastructure
 {
-    public  class SqlBaseRepository<TEntity> : ISqlBaseRepository<TEntity> where TEntity : class, IEntity, new()
+    public  class SqlBaseRepository<TEntity> : IRedirectRepository<TEntity> where TEntity : class, IEntity, new()
     {
         private SqlSugarClient db = ConnectionFactory.CreateSqlSugarClient();
         public virtual Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
