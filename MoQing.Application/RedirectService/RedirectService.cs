@@ -1,7 +1,5 @@
 ﻿using MoQing.Domain;
-using MoQing.Domain.IRepositories;
 using MoQing.Infrastructure;
-using MoQing.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoQing.Domain.IRepositories
+namespace MoQing.Infrastructure
 {
     public interface ISqlBaseRepository<TEntity> where TEntity : class, IEntity
     {

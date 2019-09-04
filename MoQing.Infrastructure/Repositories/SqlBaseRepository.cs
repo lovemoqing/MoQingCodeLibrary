@@ -1,12 +1,11 @@
-﻿using MoQing.Domain.IRepositories;
-using MoQing.Domain.Models;
+﻿using MoQing.Domain.Models;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-namespace MoQing.Infrastructure.Repositories
+namespace MoQing.Infrastructure
 {
     public  class SqlBaseRepository<TEntity> : ISqlBaseRepository<TEntity> where TEntity : class, IEntity, new()
     {

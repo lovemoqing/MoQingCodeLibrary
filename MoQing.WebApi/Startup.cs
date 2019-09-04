@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
@@ -52,10 +53,13 @@ namespace MoQing.WebApi
             services.AddAutoMapper();
 
             ContainerBuilder builder = new ContainerBuilder();
-            //将services中的服务填充到Autofac中.
-            builder.Populate(services);
             //新模块组件注册
             builder.RegisterModule<DefaultModuleRegister>();
+            //属性注入控制器 
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+            //将services中的服务填充到Autofac中.
+            builder.Populate(services);
+
             //创建容器.
             AutofacContainer = builder.Build();
             //使用容器创建 AutofacServiceProvider 
@@ -82,7 +86,7 @@ namespace MoQing.WebApi
             var rewrite = new RewriteOptions()
                .AddRedirect(@"index/(\d+)", "https://q.cnblogs.com/");
 
-            rewrite.AddRedirect("", "");
+            //rewrite.AddRedirect("", "");
 
             app.UseRewriter(rewrite);
 
