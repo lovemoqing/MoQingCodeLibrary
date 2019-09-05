@@ -24,16 +24,10 @@ namespace MoQing.WebApi.Controllers
             this.fileService = fileService;
         }
         [HttpGet, Route("Infos")]
-        public async Task<ActionResult<ApiResult>> Auth()
+        public async Task<ActionResult<ApiResult>> Infos()
         {
             var res = await redirectService.Infos();
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
-        }
-
-        [HttpGet, Route("FileName")]
-        public ActionResult<ApiResult> FileName()
-        { 
-            return new ApiResult() { Code = 200, Msg = string.Empty, Data = fileService.GetName() };
         }
     }
 }
