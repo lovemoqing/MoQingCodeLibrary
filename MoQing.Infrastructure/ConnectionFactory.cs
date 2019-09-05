@@ -1,11 +1,9 @@
 ﻿using MoQing.Infrastructure.Config;
 using SqlSugar;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
-namespace MoQing.Infrastructure
+namespace Infrastructure
 {
     public class ConnectionFactory
     {

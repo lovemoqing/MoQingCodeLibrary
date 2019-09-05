@@ -1,13 +1,13 @@
-﻿using MoQing.Domain;
-using MoQing.Domain.Models;
+﻿using Infrastructure.IRepositorie;
+using Infrastructure.Repositorie;
+using MoQing.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MoQing.Infrastructure
 {
-    public class RedirectRepository: SqlBaseRepository<FileInfo>, IRedirectRepository
+    public class RedirectRepository: SqlSugarBaseRepository<Redirect>, IRedirectRepository
     {
-
     }
 }

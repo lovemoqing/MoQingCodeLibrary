@@ -1,4 +1,4 @@
-﻿using MoQing.Domain.Models;
+﻿using MoQing.Domain;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,7 @@ namespace MoQing.Domain
     public class FileInfo: IEntity
     {
         public int ID { get; set; }
+        public string id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Name { get; set; }
         /// <summary>
         /// 文件类型：图片、视频、音频等

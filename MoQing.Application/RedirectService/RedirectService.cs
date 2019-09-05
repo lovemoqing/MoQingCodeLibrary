@@ -9,15 +9,15 @@ namespace MoQing.Application
 {
     public class RedirectService : IRedirectService
     {
-        private IRedirectRepository<Redirect> repository;
-        public RedirectService(IRedirectRepository<Redirect> repository)
+        private IRedirectRepository repository;
+        public RedirectService(IRedirectRepository repository)
         {
             this.repository = repository;
         }
-        public async Task<List<RedirectInfo>> Infos()
+        public async Task<List<Redirect>> Infos()
         {
             var res = await repository.GetAllListAsync(p => p.IsDelete == 0);
-            return res.MapTo<RedirectInfo>();
+            return res;
         }
     }
 }

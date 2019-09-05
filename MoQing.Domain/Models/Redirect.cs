@@ -1,4 +1,4 @@
-﻿using MoQing.Domain.Models;
+﻿using MoQing.Domain;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 namespace MoQing.Domain
 {
     [SugarTable("Redirect")]
-    public class Redirect: IEntity
+    public class Redirect: BaseKey
     {
         public int ID { get; set; }
         public string LongLinks { get; set; }

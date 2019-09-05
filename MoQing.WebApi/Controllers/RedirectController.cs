@@ -16,18 +16,19 @@ namespace MoQing.WebApi.Controllers
     [EnableCors("any")]
     public class RedirectController : ControllerBase
     {
-        
+        private IRedirectService redirectService;
         private IFileService fileService;
-        public RedirectController(IFileService fileService)
-        { 
+        public RedirectController(IRedirectService redirectService,IFileService fileService)
+        {
+            this.redirectService = redirectService;
             this.fileService = fileService;
         }
-        //[HttpGet, Route("Infos")]
-        //public async Task<ActionResult<ApiResult>> Auth()
-        //{
-        //    var res = await redirectService.Infos();
-        //    return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
-        //}
+        [HttpGet, Route("Infos")]
+        public async Task<ActionResult<ApiResult>> Auth()
+        {
+            var res = await redirectService.Infos();
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
+        }
 
         [HttpGet, Route("FileName")]
         public ActionResult<ApiResult> FileName()

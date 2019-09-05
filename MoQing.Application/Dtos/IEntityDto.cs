@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoQing.Domain
+namespace Application
 {
-    public interface IEntity
+    public interface IEntityDto
     {
         string id { get; set; }
     }
