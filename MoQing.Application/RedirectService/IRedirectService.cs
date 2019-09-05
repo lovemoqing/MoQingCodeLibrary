@@ -8,6 +8,6 @@ namespace MoQing.Application
 {
     public interface IRedirectService
     {
-        Task<List<Redirect>> Infos();
+        Task<List<RedirectInfo>> Infos();
     }
 }

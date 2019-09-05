@@ -1,4 +1,5 @@
-﻿using MoQing.Domain;
+﻿using AutoMapper;
+using MoQing.Domain;
 using MoQing.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,16 @@ namespace MoQing.Application
     public class RedirectService : IRedirectService
     {
         private IRedirectRepository repository;
-        public RedirectService(IRedirectRepository repository)
+        private readonly IMapper _mapper;
+        public RedirectService(IRedirectRepository repository, IMapper mapper)
         {
             this.repository = repository;
+            _mapper = mapper;
         }
-        public async Task<List<Redirect>> Infos()
+        public async Task<List<RedirectInfo>> Infos()
         {
             var res = await repository.GetAllListAsync(p => p.IsDelete == 0);
-            return res;
+            return _mapper.Map<List<RedirectInfo>>(res);
         }
     }
 }

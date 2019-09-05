@@ -12,6 +12,8 @@ namespace MoQing.Infrastructure.Config
         public AutoMapper()
         {
             CreateMap<FileInfoDto, FileInfo>();
+            CreateMap<RedirectInfo, Redirect>();
+            CreateMap<Redirect,RedirectInfo>();
         }
     }
 }
