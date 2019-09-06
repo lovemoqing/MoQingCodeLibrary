@@ -23,8 +23,19 @@ namespace MoQing.WebApi.Controllers
             this.redirectService = redirectService;
             this.fileService = fileService;
         }
+        /// <summary>
+        /// 获取重定向信息列表
+        /// </summary>
+        /// <returns></returns>
         [HttpGet, Route("Infos")]
         public async Task<ActionResult<ApiResult>> Infos()
+        {
+            var res = await redirectService.Infos();
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
+        }
+
+        [HttpGet, Route("Test")]
+        public async Task<ActionResult<ApiResult>> Test()
         {
             var res = await redirectService.Infos();
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
