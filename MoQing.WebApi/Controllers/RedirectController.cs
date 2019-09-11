@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using MoQing.Application;
 using MoQing.Application.FileService;
 using MoQing.Domain;
+using MoQing.WebApi.Config;
 
 namespace MoQing.WebApi.Controllers
 {
@@ -34,11 +35,21 @@ namespace MoQing.WebApi.Controllers
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
         }
 
-        [HttpGet, Route("Test")]
-        public async Task<ActionResult<ApiResult>> Test()
+        [HttpGet, Route("Restart")]
+        public ActionResult<ApiResult> Restart()
         {
-            var res = await redirectService.InfosAsync();
-            return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
+            string Msg = string.Empty;
+            try
+            {
+                var appManager = ApplicationManager.Load();
+                appManager.Restart();
+                Msg = "重启成功！";
+            }
+            catch (Exception ex)
+            {
+                Msg = ex.ToString();
+            }
+            return new ApiResult() { Code = 200, Msg = Msg, Data = null };
         }
     }
 }
