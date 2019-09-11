@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -9,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MoQing.Application;
+using MoQing.Domain;
 using MoQing.Infrastructure.Config;
 using MoQing.WebApi.Config;
 using Swashbuckle.AspNetCore.Swagger;
@@ -16,14 +19,17 @@ namespace MoQing.WebApi
 {
     public class Startup
     {
+        
         public static IContainer AutofacContainer;
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
+            
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true) //默认
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -82,11 +88,9 @@ namespace MoQing.WebApi
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            var rewrite = new RewriteOptions()
-               .AddRedirect(@"index/(\d+)", "https://q.cnblogs.com/");
-
-            //rewrite.AddRedirect("", "");
-
+            var rewrite = new RewriteOptions();
+            RewriteOptionsHandler rewriteOptionsHandler = new RewriteOptionsHandler();
+            rewrite = rewriteOptionsHandler.GetRewriteOptions();
             app.UseRewriter(rewrite);
 
 

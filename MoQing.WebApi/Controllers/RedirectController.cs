@@ -30,14 +30,14 @@ namespace MoQing.WebApi.Controllers
         [HttpGet, Route("Infos")]
         public async Task<ActionResult<ApiResult>> Infos()
         {
-            var res = await redirectService.Infos();
+            var res = await redirectService.InfosAsync();
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
         }
 
         [HttpGet, Route("Test")]
         public async Task<ActionResult<ApiResult>> Test()
         {
-            var res = await redirectService.Infos();
+            var res = await redirectService.InfosAsync();
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
         }
     }
