@@ -11,5 +11,7 @@ namespace MoQing.Application
         //Task<List<Redi1rectInfo>> Info();
         Task<List<RedirectInfo>> InfosAsync();
         List<RedirectInfo> Infos();
+
+        Task<RedirectInfo> AddInfosAsync(RedirectCreate req);
     }
 }

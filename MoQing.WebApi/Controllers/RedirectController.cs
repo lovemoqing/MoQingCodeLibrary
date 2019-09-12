@@ -35,21 +35,11 @@ namespace MoQing.WebApi.Controllers
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
         }
 
-        [HttpGet, Route("Restart")]
-        public ActionResult<ApiResult> Restart()
+        [HttpPost, Route("add")]
+        public async Task<ActionResult<ApiResult>> Post(RedirectCreate req)
         {
-            string Msg = string.Empty;
-            try
-            {
-                var appManager = ApplicationManager.Load();
-                appManager.Restart();
-                Msg = "重启成功！";
-            }
-            catch (Exception ex)
-            {
-                Msg = ex.ToString();
-            }
-            return new ApiResult() { Code = 200, Msg = Msg, Data = null };
+            var res = await redirectService.AddInfosAsync(req);
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
         }
     }
 }

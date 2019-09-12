@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MoQing.Application;
 using MoQing.Domain;
 
 namespace MoQing.WebApi.Controllers
@@ -12,10 +13,25 @@ namespace MoQing.WebApi.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        [HttpGet, Route("/{id}")]
-        public ActionResult<ApiResult> Restart(string id)
+        private IRedirectService redirectService;
+        public HomeController(IRedirectService _redirectService)
         {
-            return new ApiResult() { Code = 200, Msg = id, Data = null };
+            redirectService = _redirectService;
+        }
+        [HttpGet, Route("/{shortLinks}")]
+        public ActionResult Restart(string shortLinks)
+        {
+            string url = "https://www.cnblogs.com/sunshine-wy/";
+            List<RedirectInfo> res = redirectService.Infos();
+            if (res != null && res.Count > 0)
+            {
+                var info = res.SingleOrDefault(p => p.ShortLinks == shortLinks);
+                if (info != null)
+                {
+                    url = info.LongLinks;
+                }
+            }
+            return Redirect(url);
         }
     }
 }

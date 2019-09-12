@@ -14,6 +14,9 @@ namespace MoQing.Infrastructure.Config
             CreateMap<FileInfoDto, FileInfo>();
             CreateMap<RedirectInfo, Redirect>();
             CreateMap<Redirect,RedirectInfo>();
+
+            CreateMap<RedirectCreate, Redirect>();
+            CreateMap<Redirect, RedirectCreate>();
         }
     }
 }

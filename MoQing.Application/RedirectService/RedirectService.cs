@@ -27,5 +27,11 @@ namespace MoQing.Application
             var res = repository.GetAllList(p => p.IsDelete == 0);
             return _mapper.Map<List<RedirectInfo>>(res);
         }
+        public async Task<RedirectInfo> AddInfosAsync(RedirectCreate req)
+        {
+            var info = _mapper.Map<Redirect>(req);
+            var res = await repository.InsertAsync(info);
+            return _mapper.Map<RedirectInfo>(res);
+        }
     }
 }
