@@ -18,6 +18,7 @@ namespace MoQing.WebApi.Controllers
         {
             redirectService = _redirectService;
         }
+        [HttpGet]
         public string Index()
         {
             return "欢迎访问默卿的API服务！";

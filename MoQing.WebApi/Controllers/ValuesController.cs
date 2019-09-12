@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MoQing.Application.FileService;
 using MoQing.Domain;
+using MoQing.Infrastructure;
 using MoQing.Infrastructure.Common;
 using MoQing.Infrastructure.Config;
 using MoQing.Infrastructure.FileService;
@@ -108,6 +109,21 @@ namespace MoQing.WebApi.Controllers
         public ActionResult<ApiResult> Test()
         {
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = null };
+        }
+
+        [HttpPost, Route("AddRedis")]
+        public ActionResult<ApiResult> AddRedis(string key,string value)
+        {
+            RedisHelper redisHelper = new RedisHelper();
+            redisHelper.SetValue(key, value);
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = null };
+        }
+
+        [HttpGet, Route("RedisInfo")]
+        public ActionResult<ApiResult> RedisInfo(string key)
+        {
+            RedisHelper redisHelper = new RedisHelper();
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = redisHelper.GetValue(key) };
         }
     }
 }
