@@ -88,10 +88,10 @@ namespace MoQing.WebApi
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            var rewrite = new RewriteOptions();
-            RewriteOptionsHandler rewriteOptionsHandler = new RewriteOptionsHandler();
-            rewrite = rewriteOptionsHandler.GetRewriteOptions();
-            app.UseRewriter(rewrite);
+            //var rewrite = new RewriteOptions();
+            //RewriteOptionsHandler rewriteOptionsHandler = new RewriteOptionsHandler();
+            //rewrite = rewriteOptionsHandler.GetRewriteOptions();
+            //app.UseRewriter(rewrite);
 
 
 
