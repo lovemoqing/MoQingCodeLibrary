@@ -18,6 +18,10 @@ namespace MoQing.WebApi.Controllers
         {
             redirectService = _redirectService;
         }
+        public string Index()
+        {
+            return "欢迎访问默卿的API服务！";
+        }
         [HttpGet, Route("/{shortLinks}")]
         public ActionResult Restart(string shortLinks)
         {
