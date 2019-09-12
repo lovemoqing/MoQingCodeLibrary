@@ -13,5 +13,6 @@ namespace MoQing.Application
         List<RedirectInfo> Infos();
 
         Task<RedirectInfo> AddInfosAsync(RedirectCreate req);
+        Task<int> Del(int id);
     }
 }

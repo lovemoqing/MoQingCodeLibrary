@@ -41,5 +41,11 @@ namespace MoQing.WebApi.Controllers
             var res = await redirectService.AddInfosAsync(req);
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
         }
+        [HttpDelete, Route("del")]
+        public async Task<ActionResult<ApiResult>> Delete(int id)
+        {
+            var res = await redirectService.Del(id);
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = res };
+        }
     }
 }

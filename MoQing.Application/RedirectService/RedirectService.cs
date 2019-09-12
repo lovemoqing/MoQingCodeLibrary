@@ -33,5 +33,9 @@ namespace MoQing.Application
             var res = await repository.InsertAsync(info);
             return _mapper.Map<RedirectInfo>(res);
         }
+        public async Task<int> Del(int id)
+        {
+            return await repository.DeleteAsync(id.ToString());
+        }
     }
 }
