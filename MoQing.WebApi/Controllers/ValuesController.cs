@@ -125,5 +125,17 @@ namespace MoQing.WebApi.Controllers
             RedisHelper redisHelper = new RedisHelper();
             return new ApiResult() { Code = 200, Msg = string.Empty, Data = redisHelper.GetValue(key) };
         }
+
+        /// <summary>
+        /// 测测测
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        [HttpGet, Route("Test")]
+        public ActionResult<ApiResult> Test(string key)
+        {
+            RedisHelper redisHelper = new RedisHelper();
+            return new ApiResult() { Code = 200, Msg = string.Empty, Data = redisHelper.GetValue(key) };
+        }
     }
 }
