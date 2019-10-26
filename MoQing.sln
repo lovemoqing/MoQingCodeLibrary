@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoQing.WebApi", "MoQing.WebApi\MoQing.WebApi.csproj", "{FBD67F61-98C6-48CF-9288-ED48CF453877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoQing.WebApi", "MoQing.WebApi\MoQing.WebApi.csproj", "{FBD67F61-98C6-48CF-9288-ED48CF453877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoQing.Domain", "MoQing.Domain\MoQing.Domain.csproj", "{D5EBAF84-430E-4508-8FEE-780307B1E186}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoQing.Domain", "MoQing.Domain\MoQing.Domain.csproj", "{D5EBAF84-430E-4508-8FEE-780307B1E186}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoQing.Application", "MoQing.Application\MoQing.Application.csproj", "{2BAB79AF-1BD8-4C52-BC12-E224C225D71A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoQing.Application", "MoQing.Application\MoQing.Application.csproj", "{2BAB79AF-1BD8-4C52-BC12-E224C225D71A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoQing.Infrastructure", "MoQing.Infrastructure\MoQing.Infrastructure.csproj", "{E8F8DEFF-D570-4204-9F7F-AC6CAABBBCBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoQing.Infrastructure", "MoQing.Infrastructure\MoQing.Infrastructure.csproj", "{E8F8DEFF-D570-4204-9F7F-AC6CAABBBCBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moqing.Webapp", "Moqing.Webapp\Moqing.Webapp.csproj", "{598E2F08-962A-400C-B1B0-E996B76DCF2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E8F8DEFF-D570-4204-9F7F-AC6CAABBBCBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8F8DEFF-D570-4204-9F7F-AC6CAABBBCBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8F8DEFF-D570-4204-9F7F-AC6CAABBBCBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598E2F08-962A-400C-B1B0-E996B76DCF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598E2F08-962A-400C-B1B0-E996B76DCF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598E2F08-962A-400C-B1B0-E996B76DCF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598E2F08-962A-400C-B1B0-E996B76DCF2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
