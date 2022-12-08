@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Qiniu.Shared" Version="7.2.15" />
     <PackageReference Include="sqlSugarCore" Version="5.0.0.8" />
     <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
